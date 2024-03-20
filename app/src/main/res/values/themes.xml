@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BudgetTrack" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Color scheme -->
+        <item name="android:colorPrimary">@color/green</item>
+        <item name="android:colorPrimaryDark">@color/green_dark</item>
+        <item name="android:colorAccent">@color/blue</item>
+        <item name="colorSurface">@color/surface</item>
+
+        <!-- Navigation -->
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+
+        <!-- Splash screen -->
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">?attr/colorSurface</item>
+        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">?attr/colorSurface</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@drawable/avd_splash_logo</item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">1000</item>
+        <item name="android:windowSplashScreenBehavior" tools:targetApi="tiramisu">icon_preferred</item>
+    </style>
+
+    <style name="Theme.BudgetTrack" parent="Base.Theme.BudgetTrack" />
+
+    <style name="Theme.BudgetTrack.Button" parent="Widget.Material3.Button">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Medium</item>
+        <item name="backgroundTint">@color/green</item>
+    </style>
+
+    <style name="Theme.BudgetTrack.Button.TextButton" parent="Widget.Material3.Button.TextButton">
+        <!-- Disable ripple effect -->
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/green_dark</item>
+    </style>
+</resources>

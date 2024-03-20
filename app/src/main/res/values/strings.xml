@@ -1,0 +1,19 @@
+<resources>
+    <!-- App -->
+    <string name="app_name">Budget Track</string>
+    <string name="app_name_long">BudgetTrack: Financial Tracker</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Welcome to BudgetTrack</string>
+    <string name="onboarding_title_2">Discover Financial Freedom</string>
+    <string name="onboarding_title_3">Ready to Begin?</string>
+    <string name="onboarding_description_1">Get started with BudgetTrack, your personal budget management companion. Keep track of your expenses, set savings goals, and gain control of your finances effortlessly.</string>
+    <string name="onboarding_description_2">Start your journey towards financial freedom with BudgetTrack. Gain insights into your spending habits, create budgets that work for you, and pave the way for a secure financial future.</string>
+    <string name="onboarding_description_3">Take the first step towards financial empowerment with BudgetTrack. Explore features, set goals, and start managing your finances like never before.</string>
+
+    <!-- Button -->
+    <string name="btn_skip">Skip</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_get_started">Get Started</string>
+
+</resources>
