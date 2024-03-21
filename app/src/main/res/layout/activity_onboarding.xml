@@ -4,20 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingVertical="24dp"
+    android:paddingVertical="48dp"
     tools:context=".ui.onboarding.OnboardingActivity">
-
-    <!-- Skip Button -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_skip"
-        style="@style/Theme.BudgetTrack.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/btn_skip"
-        android:text="@string/btn_skip"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- View Pager -->
     <androidx.viewpager2.widget.ViewPager2
@@ -27,7 +15,7 @@
         app:layout_constraintBottom_toTopOf="@id/indicator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_skip" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Indicator -->
     <me.relex.circleindicator.CircleIndicator3
@@ -39,6 +27,7 @@
         app:ci_drawable="@drawable/ic_indicator"
         app:ci_width="8dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_action"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Action Button (Next/Get Started) -->
@@ -48,8 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:contentDescription="@string/btn_next"
-        android:text="@string/btn_next"
+        android:contentDescription="@string/btn_get_started"
+        android:text="@string/btn_get_started"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -1,27 +1,25 @@
 package com.andresuryana.budgettrack.ui.onboarding
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.ViewModelProvider
-import androidx.transition.ChangeBounds
-import androidx.transition.TransitionManager
-import androidx.viewpager2.widget.ViewPager2
-import com.andresuryana.budgettrack.R
+import androidx.lifecycle.lifecycleScope
 import com.andresuryana.budgettrack.databinding.ActivityOnboardingBinding
 import com.andresuryana.budgettrack.ui.MainActivity
-import com.andresuryana.budgettrack.ui.onboarding.ActionButtonState.GET_STARTED
-import com.andresuryana.budgettrack.ui.onboarding.ActionButtonState.NEXT
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class OnboardingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnboardingBinding
     private lateinit var viewModel: OnboardingViewModel
 
-    private lateinit var onboardingAdapter: OnboardingAdapter
+    // Flag to control auto-sliding
+    private var isAutoSlideEnabled = false
+    private var isAutoSlideStarted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,26 +29,34 @@ class OnboardingActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[OnboardingViewModel::class.java]
 
-        onboardingAdapter = OnboardingAdapter()
-
         setupViewPager()
         setupButton()
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (isAutoSlideStarted) {
+            startAutoSlide()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Save the auto-slide state before app pause
+        isAutoSlideStarted = isAutoSlideEnabled
+        stopAutoSlide()
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopAutoSlide()
+    }
+
     private fun setupViewPager() {
-        // Setup the view pager with the adapter and page listener
+        // Setup the view pager adapter
+        val onboardingAdapter = OnboardingAdapter()
         binding.viewPager.adapter = onboardingAdapter
-        binding.viewPager.registerOnPageChangeCallback(
-            object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    if (position == onboardingAdapter.itemCount - 1) {
-                        setActionButtonState(GET_STARTED)
-                    } else {
-                        setActionButtonState(NEXT)
-                    }
-                }
-            }
-        )
 
         // Set view pager target for the indicator
         binding.indicator.setViewPager(binding.viewPager)
@@ -58,70 +64,49 @@ class OnboardingActivity : AppCompatActivity() {
 
         // Observe onboarding list
         viewModel.onboardingList.observe(this, onboardingAdapter::setList)
+
+        // Star auto-sliding
+        startAutoSlide()
     }
 
     private fun setupButton() {
-        binding.btnSkip.setOnClickListener { handleSkipButtonClick() }
-        binding.btnAction.setOnClickListener { handleActionButtonClick() }
-    }
-
-    private fun handleSkipButtonClick() {
-        viewModel.markOnboardingShown()
-        showMainScreen()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun handleActionButtonClick() {
-        val currentItem = binding.viewPager.currentItem
-        val lastItemIndex = onboardingAdapter.itemCount - 1
-
-        if (currentItem == lastItemIndex) {
-            // Handle action when on last item
+        binding.btnAction.setOnClickListener {
             viewModel.markOnboardingShown()
             showMainScreen()
-        } else {
-            // Handle action when not on last item
-            if (currentItem < lastItemIndex) {
-                // Move to the next page and notify adapter
-                binding.viewPager.currentItem = currentItem + 1
-                onboardingAdapter.notifyDataSetChanged()
-                setActionButtonState(if (currentItem + 1 == lastItemIndex) GET_STARTED else NEXT)
-            }
         }
-    }
-
-    private fun setActionButtonState(state: ActionButtonState) {
-        val constraintSet = ConstraintSet().apply { clone(binding.root) }
-
-        when (state) {
-            NEXT -> {
-                binding.btnAction.setText(R.string.btn_next)
-                binding.btnAction.contentDescription = getString(R.string.btn_next)
-                constraintSet.setHorizontalBias(R.id.btn_action, 1f)
-            }
-
-            GET_STARTED -> {
-                binding.btnAction.setText(R.string.btn_get_started)
-                binding.btnAction.contentDescription = getString(R.string.btn_get_started)
-                constraintSet.setHorizontalBias(R.id.btn_action, 0.5f)
-            }
-        }
-
-        applyConstraintSetWithAnimation(constraintSet)
-    }
-
-    private fun applyConstraintSetWithAnimation(constraintSet: ConstraintSet) {
-        val transition = ChangeBounds().apply {
-            interpolator = AccelerateDecelerateInterpolator()
-            duration = 500
-        }
-
-        TransitionManager.beginDelayedTransition(binding.root, transition)
-        constraintSet.applyTo(binding.root)
     }
 
     private fun showMainScreen() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
+    }
+
+    private fun startAutoSlide() {
+        isAutoSlideEnabled = true
+        lifecycleScope.launch {
+            while (isAutoSlideEnabled) {
+                delay(AUTO_SLIDE_DELAY)
+                withContext(Dispatchers.Main) {
+                    var currentPage = binding.viewPager.currentItem
+                    if (currentPage == (viewModel.onboardingList.value?.size ?: 0) - 1) {
+                        currentPage = 0 // Reset to the first item when reaching the last item
+                    } else {
+                        currentPage++ // Increment to the next item
+                    }
+                    binding.viewPager.setCurrentItem(currentPage, true)
+                }
+                delay(AUTO_SLIDE_PERIOD - AUTO_SLIDE_DELAY)
+            }
+        }
+    }
+
+    private fun stopAutoSlide() {
+        isAutoSlideEnabled = false
+    }
+
+    companion object {
+        // Auto-slide constants
+        private const val AUTO_SLIDE_DELAY = 3000L
+        private const val AUTO_SLIDE_PERIOD = 5000L
     }
 }
