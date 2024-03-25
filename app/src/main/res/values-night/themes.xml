@@ -6,6 +6,7 @@
         <item name="android:colorPrimaryDark">@color/green_dark</item>
         <item name="android:colorAccent">@color/blue</item>
         <item name="colorOnPrimary">?attr/colorSurface</item>
+        <item name="colorSecondary">?android:attr/colorPrimary</item>
 
         <!-- Navigation -->
         <item name="android:navigationBarColor">?attr/colorSurface</item>
@@ -20,4 +21,11 @@
     </style>
 
     <style name="Theme.BudgetTrack" parent="Base.Theme.BudgetTrack" />
+
+    <style name="Theme.BudgetTrack.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="tint">?colorOnPrimary</item>
+        <item name="colorPrimary">?colorPrimary</item>
+        <item name="colorPrimaryVariant">?colorPrimaryDark</item>
+        <item name="colorOnPrimary">?colorOnPrimary</item>
+    </style>
 </resources>

@@ -6,6 +6,7 @@
         <item name="android:colorPrimaryDark">@color/green_dark</item>
         <item name="android:colorAccent">@color/blue</item>
         <item name="colorSurface">@color/surface</item>
+        <item name="colorSecondary">?android:attr/colorPrimary</item>
 
         <!-- Navigation -->
         <item name="android:navigationBarColor">?attr/colorSurface</item>
@@ -32,5 +33,27 @@
         <!-- Disable ripple effect -->
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/green_dark</item>
+    </style>
+
+    <style name="Theme.BudgetTrack.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="backgroundTint">?colorSurface</item>
+    </style>
+
+    <style name="Theme.BudgetTrack.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemActiveIndicatorStyle">@null</item>
+        <item name="itemRippleColor">@null</item>
+        <item name="itemPaddingTop">16dp</item>
+        <item name="itemPaddingBottom">20dp</item>
+        <item name="itemIconTint">@color/bottom_nav_item_color_selector</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color_selector</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="itemTextAppearanceActiveBoldEnabled">false</item>
+    </style>
+
+    <style name="Theme.BudgetTrack.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="tint">?colorOnPrimary</item>
+        <item name="colorPrimary">?colorAccent</item>
+        <item name="colorPrimaryVariant">?colorPrimaryDark</item>
+        <item name="colorOnPrimary">?colorOnPrimary</item>
     </style>
 </resources>

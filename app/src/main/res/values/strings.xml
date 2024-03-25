@@ -15,5 +15,11 @@
     <string name="btn_skip">Skip</string>
     <string name="btn_next">Next</string>
     <string name="btn_get_started">Get Started</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_statistic">Statistic</string>
+    <string name="menu_notification">Notification</string>
+    <string name="menu_setting">Setting</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_add_transaction">Add Transaction</string>
 
 </resources>

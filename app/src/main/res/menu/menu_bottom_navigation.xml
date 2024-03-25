@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home_selector"
+        android:title="@string/menu_home" />
+    <item
+        android:id="@+id/statistic"
+        android:icon="@drawable/ic_statistic_selector"
+        android:title="@string/menu_statistic" />
+    <item
+        android:checkable="false"
+        android:enabled="false"
+        app:showAsAction="never"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/notification"
+        android:icon="@drawable/ic_notification_selector"
+        android:title="@string/menu_notification" />
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_setting_selector"
+        android:title="@string/menu_setting" />
+</menu>
