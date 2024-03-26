@@ -1,18 +1,24 @@
-package com.andresuryana.budgettrack.util
+package com.andresuryana.budgettrack.ui.onboarding.manager
 
 import android.content.Context
 import android.content.SharedPreferences
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class OnboardingManager(context: Context) {
+@Singleton
+class OnboardingManagerImpl @Inject constructor(
+    @ApplicationContext context: Context
+) : OnboardingManager {
 
     private val onboardingPrefs: SharedPreferences =
         context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-    fun isShowOnboarding(): Boolean {
+    override fun isShowOnboarding(): Boolean {
         return onboardingPrefs.getBoolean(KEY_SHOW_ONBOARDING, true)
     }
 
-    fun setShowOnboarding(isShow: Boolean) {
+    override fun setShowOnboarding(isShow: Boolean) {
         onboardingPrefs.edit()
             .putBoolean(KEY_SHOW_ONBOARDING, isShow)
             .apply()

@@ -1,17 +1,19 @@
 package com.andresuryana.budgettrack.ui.onboarding
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.andresuryana.budgettrack.R
-import com.andresuryana.budgettrack.util.OnboardingManager
+import com.andresuryana.budgettrack.ui.onboarding.manager.OnboardingManager
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class OnboardingViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val onboardingManager = OnboardingManager(application)
+@HiltViewModel
+class OnboardingViewModel @Inject constructor(
+    private val onboardingManager: OnboardingManager
+) : ViewModel() {
 
     private var _onboardingList = MutableLiveData<List<OnboardingItem>>()
     val onboardingList: LiveData<List<OnboardingItem>> = _onboardingList

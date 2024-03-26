@@ -2,8 +2,10 @@ package com.andresuryana.budgettrack.util
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.andresuryana.budgettrack.util.OnboardingManager.Companion.KEY_SHOW_ONBOARDING
-import com.andresuryana.budgettrack.util.OnboardingManager.Companion.PREFS_NAME
+import com.andresuryana.budgettrack.ui.onboarding.manager.OnboardingManager
+import com.andresuryana.budgettrack.ui.onboarding.manager.OnboardingManagerImpl
+import com.andresuryana.budgettrack.ui.onboarding.manager.OnboardingManagerImpl.Companion.KEY_SHOW_ONBOARDING
+import com.andresuryana.budgettrack.ui.onboarding.manager.OnboardingManagerImpl.Companion.PREFS_NAME
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -39,7 +41,7 @@ class OnboardingManagerTest {
         whenever(editor.putBoolean(anyString(), anyBoolean())).thenReturn(editor)
 
         // Onboarding manager instance
-        onboardingManager = OnboardingManager(context)
+        onboardingManager = OnboardingManagerImpl(context)
     }
 
     @Test

@@ -2,20 +2,22 @@ package com.andresuryana.budgettrack.ui.onboarding
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.andresuryana.budgettrack.databinding.ActivityOnboardingBinding
 import com.andresuryana.budgettrack.ui.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+@AndroidEntryPoint
 class OnboardingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnboardingBinding
-    private lateinit var viewModel: OnboardingViewModel
+    private val viewModel by viewModels<OnboardingViewModel>()
 
     // Flag to control auto-sliding
     private var isAutoSlideEnabled = false
@@ -26,8 +28,6 @@ class OnboardingActivity : AppCompatActivity() {
 
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        viewModel = ViewModelProvider(this)[OnboardingViewModel::class.java]
 
         setupViewPager()
         setupButton()

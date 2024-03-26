@@ -1,15 +1,18 @@
 package com.andresuryana.budgettrack.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.andresuryana.budgettrack.util.OnboardingManager
+import com.andresuryana.budgettrack.ui.onboarding.manager.OnboardingManager
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val onboardingManager: OnboardingManager
+) : ViewModel() {
 
-    private val onboardingManager = OnboardingManager(application)
     var isReady = false
 
     init {

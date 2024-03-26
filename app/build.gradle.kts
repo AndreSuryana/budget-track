@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -44,8 +46,9 @@ android {
 dependencies {
 
     // Core Component
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.activity:activity-ktx:1.8.2")
 
     // UI
     implementation("com.google.android.material:material:1.11.0")
@@ -58,6 +61,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
+    // Dependency Injection
+    implementation("com.google.dagger:hilt-android:2.50")
+    kapt("com.google.dagger:hilt-android-compiler:2.50")
+
     // Testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.test:core:1.5.0")
@@ -65,4 +72,9 @@ dependencies {
     testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
