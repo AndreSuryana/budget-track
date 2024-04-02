@@ -1,8 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("kapt")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.daggerHilt)
 }
 
 android {
@@ -45,36 +45,45 @@ android {
 
 dependencies {
 
-    // Core Component
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.activity:activity-ktx:1.8.2")
+    // Default Dependency
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 
     // UI
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.core:core-splashscreen:1.0.1")
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("me.relex:circleindicator:2.1.6")
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.splashscreen)
+    implementation(libs.androidx.viewpager2)
+    implementation(libs.androidx.swiperefresh)
+    implementation(libs.circleindicator)
 
     // Lifecycle
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation(libs.lifecycle.runtime)
+    implementation(libs.lifecycle.viewmodel)
 
     // Dependency Injection
-    implementation("com.google.dagger:hilt-android:2.50")
-    kapt("com.google.dagger:hilt-android-compiler:2.50")
+    implementation(libs.dagger.hilt)
+    kapt(libs.dagger.hilt.compiler)
 
-    // Testing
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("androidx.test:core:1.5.0")
-    testImplementation("org.mockito:mockito-core:3.9.0")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    // Room Database
+    implementation(libs.room.runtime)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(libs.room.compiler)
+
+    // Navigation Component
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
+
+    // UI Test
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
 }
 
-// Allow references to generated code
 kapt {
     correctErrorTypes = true
 }
