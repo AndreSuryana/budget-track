@@ -10,6 +10,9 @@ import android.view.animation.AnticipateInterpolator
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.andresuryana.budgettrack.R
 import com.andresuryana.budgettrack.databinding.ActivityMainBinding
 import com.andresuryana.budgettrack.ui.onboarding.OnboardingActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +29,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupNavigation()
         setupSplashScreen()
+    }
+
+    private fun setupNavigation() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+        binding.bottomNav.setupWithNavController(navHostFragment.navController)
     }
 
     private fun setupSplashScreen() {
