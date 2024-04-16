@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="acc_mandiri">Mandiri</string>
+    <string name="acc_bri">BRI</string>
+    <string name="acc_bca">BCA</string>
+    <string name="acc_bni">BNI</string>
+    <string name="acc_btn">BTN</string>
+    <string name="acc_bsi">BSI</string>
+    <string name="acc_cimb">CIMB</string>
+    <string name="acc_permata">Permata</string>
+    <string name="acc_ocbc">OCBC NISP</string>
+    <string name="acc_panin">Panin</string>
+
+    <string name="acc_gopay">Gopay</string>
+    <string name="acc_ovo">OVO</string>
+    <string name="acc_dana">DANA</string>
+    <string name="acc_shopeepay">ShopeePay</string>
+    <string name="acc_paypal">PayPal</string>
+
+    <string name="acc_cash">Cash</string>
+</resources>
