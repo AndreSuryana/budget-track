@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="category_housing">Housing</string>
+    <string name="category_transportation">Transportation</string>
+    <string name="category_food">Food</string>
+    <string name="category_healthcare">Healthcare</string>
+    <string name="category_personal">Personal</string>
+    <string name="category_debt">Debt Payments</string>
+    <string name="category_entertainment">Entertainment</string>
+    <string name="category_education">Education</string>
+    <string name="category_savings">Savings</string>
+    <string name="category_travel">Travel</string>
+    <string name="category_insurance">Insurance</string>
+    <string name="category_investments">Investments</string>
+    <string name="category_others">Others</string>
+</resources>
