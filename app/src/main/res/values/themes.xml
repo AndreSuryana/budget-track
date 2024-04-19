@@ -56,4 +56,11 @@
         <item name="colorPrimaryVariant">?colorPrimaryDark</item>
         <item name="colorOnPrimary">?colorOnPrimary</item>
     </style>
+
+    <style name="Theme.BudgetTrack.Dialog.LoadingDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowElevation">0dp</item>
+    </style>
 </resources>

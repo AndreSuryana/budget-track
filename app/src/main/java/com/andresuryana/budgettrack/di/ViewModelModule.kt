@@ -1,6 +1,12 @@
 package com.andresuryana.budgettrack.di
 
 import android.content.Context
+import com.andresuryana.budgettrack.data.dummy.DummyAccountRepository
+import com.andresuryana.budgettrack.data.dummy.DummyExpenseRepository
+import com.andresuryana.budgettrack.data.dummy.DummyUserRepository
+import com.andresuryana.budgettrack.domain.repository.account.AccountRepository
+import com.andresuryana.budgettrack.domain.repository.expense.ExpenseRepository
+import com.andresuryana.budgettrack.domain.repository.user.UserRepository
 import com.andresuryana.budgettrack.ui.onboarding.manager.OnboardingManager
 import com.andresuryana.budgettrack.ui.onboarding.manager.OnboardingManagerImpl
 import dagger.Module
@@ -18,4 +24,16 @@ object ViewModelModule {
     @ViewModelScoped
     fun provideOnboardingManager(@ApplicationContext context: Context): OnboardingManager =
         OnboardingManagerImpl(context)
+
+    @Provides
+    @ViewModelScoped
+    fun provideUserRepository(): UserRepository = DummyUserRepository()
+
+    @Provides
+    @ViewModelScoped
+    fun provideAccountRepository(): AccountRepository = DummyAccountRepository()
+
+    @Provides
+    @ViewModelScoped
+    fun provideExpenseRepository(): ExpenseRepository = DummyExpenseRepository()
 }

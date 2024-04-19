@@ -11,6 +11,12 @@
     <string name="onboarding_description_2">Start your journey towards financial freedom with BudgetTrack. Gain insights into your spending habits, create budgets that work for you, and pave the way for a secure financial future.</string>
     <string name="onboarding_description_3">Take the first step towards financial empowerment with BudgetTrack. Explore features, set goals, and start managing your finances like never before.</string>
 
+    <!-- Home -->
+    <string name="title_total_expense">Total expense</string>
+    <string name="title_last_month">Total expense</string>
+    <string name="title_accounts">Accounts</string>
+    <string name="title_recent_expenses">Recent Expenses</string>
+
     <!-- Button -->
     <string name="btn_skip">Skip</string>
     <string name="btn_next">Next</string>
@@ -21,5 +27,19 @@
     <string name="menu_setting">Setting</string>
     <string name="btn_add">Add</string>
     <string name="btn_add_transaction">Add Transaction</string>
+
+    <!-- Default Text / Placeholder -->
+    <string name="default_guest_user">Guest</string>
+    <string name="default_amount">Rp 0</string>
+    <string name="text_today">Today</string>
+    <string name="text_yesterday">Yesterday</string>
+    <string name="placeholder_expense_description">%s \u2022 %s</string>
+
+    <!-- Greetings -->
+    <string name="greeting_morning">Good morning</string>
+    <string name="greeting_afternoon">Good afternoon</string>
+    <string name="greeting_evening">Good evening</string>
+    <string name="greeting_night">Good night</string>
+    <string name="greeting_default">Hello</string>
 
 </resources>
