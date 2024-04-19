@@ -42,4 +42,7 @@
     <string name="greeting_night">Good night</string>
     <string name="greeting_default">Hello</string>
 
+    <!-- Error -->
+    <string name="error_unknown">Unknown error! Something went wrong</string>
+
 </resources>

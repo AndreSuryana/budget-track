@@ -145,6 +145,10 @@ class HomeFragment : BaseFragment() {
                 }
             }
         }
+
+        viewModel.toastEvent.observe(viewLifecycleOwner) { event ->
+            event.getIfNotHandled()?.let { showToast(requireContext(), it) }
+        }
     }
 
     private fun setGreetings(text: HomeUiState.GreetingText, detail: HomeUiState.GreetingDetail) {
