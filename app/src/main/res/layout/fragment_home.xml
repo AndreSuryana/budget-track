@@ -56,7 +56,7 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
                 tools:itemCount="8"
-                tools:listitem="@layout/item_account" />
+                tools:listitem="@layout/horizontal_item_small" />
 
             <!-- Recent Expenses Group by Day -->
             <com.google.android.material.textview.MaterialTextView

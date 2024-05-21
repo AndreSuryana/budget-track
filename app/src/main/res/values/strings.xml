@@ -12,10 +12,24 @@
     <string name="onboarding_description_3">Take the first step towards financial empowerment with BudgetTrack. Explore features, set goals, and start managing your finances like never before.</string>
 
     <!-- Home -->
-    <string name="title_total_expense">Total expense</string>
     <string name="title_last_month">Total expense</string>
     <string name="title_accounts">Accounts</string>
     <string name="title_recent_expenses">Recent Expenses</string>
+
+    <!-- Statistic -->
+    <string name="expense_limit_total">/ %s limit</string>
+    <string name="title_spending_details">Spending Details</string>
+    <string name="subtitle_spending_details">Your expenses are divided into %d categories</string>
+    <string name="title_budget_progress">Budget Progress</string>
+    <string name="subtitle_budget_progress">Details about your expenses in the context of your budget</string>
+    <string name="title_overall_details">Overall Details</string>
+    <string name="subtitle_overall_details">Your budgeting and transaction overall data</string>
+    <string name="title_budgeting_report">Budgeting Report</string>
+    <string name="subtitle_budgeting_report">Export your budgeting report as PDF files</string>
+
+    <!-- Title -->
+    <string name="title_total_expense">Total expense</string>
+    <string name="title_filter_date">Filter date</string>
 
     <!-- Button -->
     <string name="btn_skip">Skip</string>
@@ -27,13 +41,17 @@
     <string name="menu_setting">Setting</string>
     <string name="btn_add">Add</string>
     <string name="btn_add_transaction">Add Transaction</string>
+    <string name="btn_export_pdf">Export as PDF</string>
+    <string name="btn_reset">Reset</string>
 
     <!-- Default Text / Placeholder -->
     <string name="default_guest_user">Guest</string>
     <string name="default_amount">Rp 0</string>
+    <string name="default_percentage">0%</string>
     <string name="text_today">Today</string>
     <string name="text_yesterday">Yesterday</string>
     <string name="placeholder_expense_description">%s \u2022 %s</string>
+    <string name="text_amount_negative">-%s</string>
 
     <!-- Greetings -->
     <string name="greeting_morning">Good morning</string>
@@ -44,5 +62,25 @@
 
     <!-- Error -->
     <string name="error_unknown">Unknown error! Something went wrong</string>
+
+    <!-- Months Array -->
+    <string-array name="months_short">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    <!-- Month Relatives -->
+    <string name="date_this_month">This month</string>
+    <string name="date_last_month">Last month</string>
 
 </resources>

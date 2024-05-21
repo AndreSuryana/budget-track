@@ -25,6 +25,10 @@ class ExpenseViewHolder(private val binding: ItemExpenseBinding) :
             item.timestamp?.formatRelativeDate(itemView.context),
             item.description ?: item.category.title
         )
-        binding.amount.text = item.amount.formatCurrency()
+
+        // Format currency as negative value
+        binding.amount.text = itemView.context.getString(
+            R.string.text_amount_negative, item.amount.formatCurrency()
+        )
     }
 }

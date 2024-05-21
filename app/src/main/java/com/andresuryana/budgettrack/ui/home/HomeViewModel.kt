@@ -51,7 +51,7 @@ class HomeViewModel @Inject constructor(
             lastToastResId = null
 
             toggleLoading()
-            delay(3_000) // FIXME: Just for development only!
+            delay(1_000) // FIXME: Just for development only!
             getGreetingState()
             getExpenseTotalState()
             getUserAccounts()

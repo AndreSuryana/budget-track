@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Title Section -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/title_budget_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/marginNormal"
+        android:text="@string/title_budget_progress"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+    <!-- Subtitle Section -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/subtitle_budget_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/marginNormal"
+        android:layout_marginTop="@dimen/marginExtraSmall"
+        android:text="@string/subtitle_budget_progress"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
+
+    <!-- Categories Progress Bar -->
+    <!-- TODO: Create custom view with multiple progress inside a progress bar -->
+
+    <!-- Expense Categories -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/expenses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/paddingNormal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_category_percentage" />
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.andresuryana.budgettrack.ui.home.adapter
+package com.andresuryana.budgettrack.domain.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.andresuryana.budgettrack.domain.model.BaseModel

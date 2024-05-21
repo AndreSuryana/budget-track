@@ -1,13 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/menu_statistic" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/paddingNormal"
+            android:paddingBottom="@dimen/paddingExtraLarge">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/marginNormal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/header_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/menu_statistic"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/filter_month"
+                    style="@style/Theme.BudgetTrack.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_arrow_expand"
+                    android:drawableTint="?attr/colorOnSurface"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/date_this_month"
+                    android:textColor="?attr/colorOnSurface"
+                    app:iconPadding="@dimen/paddingExtraSmall"
+                    app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small" />
+
+            </LinearLayout>
+
+            <!-- Total Expense Card -->
+            <include
+                android:id="@+id/expense_total"
+                layout="@layout/card_statistic_expense_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/marginNormal"
+                android:layout_marginTop="@dimen/marginNormal" />
+
+            <!-- TODO: Weekly Expense, in form of statistic graph -->
+
+            <!-- Spending Details Section -->
+            <include
+                android:id="@+id/spending_details"
+                layout="@layout/layout_spending_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginLarge" />
+
+            <!-- Budget Progress Section -->
+            <include
+                android:id="@+id/budget_progress"
+                layout="@layout/layout_budget_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginNormal" />
+
+            <!-- Overall Details Section -->
+            <include
+                android:id="@+id/overall_details"
+                layout="@layout/layout_overall_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginNormal" />
+
+            <!-- Export Budget Section -->
+            <include
+                android:id="@+id/budget_report"
+                layout="@layout/layout_budget_report"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginNormal"
+                android:layout_marginBottom="@dimen/marginExtraLarge" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

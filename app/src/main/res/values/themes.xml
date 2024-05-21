@@ -27,6 +27,7 @@
         <item name="android:insetBottom">0dp</item>
         <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Medium</item>
         <item name="backgroundTint">@color/green</item>
+        <item name="android:drawableTint">?colorOnPrimary</item>
     </style>
 
     <style name="Theme.BudgetTrack.Button.TextButton" parent="Widget.Material3.Button.TextButton">

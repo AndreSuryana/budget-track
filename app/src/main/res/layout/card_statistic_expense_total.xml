@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/cardRadiusNormal"
+    app:cardElevation="@dimen/cardElevationSmall"
+    app:strokeWidth="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_background">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title_total_expense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/marginNormal"
+            android:layout_marginTop="@dimen/marginNormal"
+            android:text="@string/title_total_expense"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?android:textColorPrimaryInverseNoDisable"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:viewBindingIgnore="true" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="@string/default_amount"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+            android:textColor="?android:textColorPrimaryInverseNoDisable"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/title_total_expense"
+            app:layout_constraintTop_toBottomOf="@id/title_total_expense"
+            tools:viewBindingIgnore="true" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/limit_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginExtraSmall"
+            android:text="@string/expense_limit_total"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?android:textColorPrimaryInverseNoDisable"
+            app:layout_constraintBottom_toBottomOf="@+id/total"
+            app:layout_constraintStart_toEndOf="@+id/total"
+            app:layout_constraintTop_toTopOf="@+id/total"
+            app:layout_constraintVertical_bias="0.7" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_expense"
+            style="@style/Widget.Material3.LinearProgressIndicator"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginSmall"
+            android:layout_marginBottom="@dimen/marginNormal"
+            app:indicatorColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/title_total_expense"
+            app:layout_constraintStart_toStartOf="@+id/title_total_expense"
+            app:layout_constraintTop_toBottomOf="@id/total"
+            app:trackColor="@color/black_alpha_20"
+            app:trackCornerRadius="@dimen/cardRadiusNormal"
+            app:trackThickness="6dp"
+            tools:progress="30" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

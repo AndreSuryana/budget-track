@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.andresuryana.budgettrack.databinding.ItemExpenseBinding
 import com.andresuryana.budgettrack.domain.model.expense.Expense
-import com.andresuryana.budgettrack.ui.home.adapter.BaseDiffCallback
+import com.andresuryana.budgettrack.domain.adapter.BaseDiffCallback
 
 class ExpenseAdapter : RecyclerView.Adapter<ExpenseViewHolder>() {
 

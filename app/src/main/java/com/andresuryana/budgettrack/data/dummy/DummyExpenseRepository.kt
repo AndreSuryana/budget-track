@@ -3,24 +3,39 @@ package com.andresuryana.budgettrack.data.dummy
 import com.andresuryana.budgettrack.domain.model.expense.Expense
 import com.andresuryana.budgettrack.domain.model.expense.ExpenseCategory
 import com.andresuryana.budgettrack.domain.model.expense.ExpenseCategoryType
+import com.andresuryana.budgettrack.domain.model.expense.ExpenseSummaryDetail
 import com.andresuryana.budgettrack.domain.model.expense.ExpenseTotal
 import com.andresuryana.budgettrack.domain.repository.expense.ExpenseRepository
 import com.andresuryana.budgettrack.domain.resource.Resource
+import com.andresuryana.budgettrack.domain.resource.error.ExpenseCategoryError
 import com.andresuryana.budgettrack.domain.resource.error.ExpenseError
+import com.andresuryana.budgettrack.domain.resource.error.ExpenseSummaryError
 import java.text.SimpleDateFormat
+import java.time.Instant
 import java.util.Locale
 
 class DummyExpenseRepository : ExpenseRepository {
 
     // List of dummy expense categories
-    private val categoryHousing = ExpenseCategory(1, "Housing", ExpenseCategoryType.HOUSING)
-    private val categoryTransportation = ExpenseCategory(2, "Transportation", ExpenseCategoryType.TRANSPORTATION)
-    private val categoryFood = ExpenseCategory(3, "Food", ExpenseCategoryType.FOOD)
-    private val categoryHealthcare = ExpenseCategory(4, "Healthcare", ExpenseCategoryType.HEALTHCARE)
-    private val categoryPersonal = ExpenseCategory(5, "Personal", ExpenseCategoryType.PERSONAL)
-    private val categorySavings = ExpenseCategory(6, "Savings", ExpenseCategoryType.SAVINGS)
-    private val categoryTravel = ExpenseCategory(7, "Travel", ExpenseCategoryType.TRAVEL)
-    private val categoryInsurance = ExpenseCategory(8, "Insurance", ExpenseCategoryType.INSURANCE)
+    private val categoryHousing = ExpenseCategory(1, "Housing", 2_000_000, ExpenseCategoryType.HOUSING)
+    private val categoryTransportation = ExpenseCategory(2, "Transportation", 500_000, ExpenseCategoryType.TRANSPORTATION)
+    private val categoryFood = ExpenseCategory(3, "Food", 1_500_000, ExpenseCategoryType.FOOD)
+    private val categoryHealthcare = ExpenseCategory(4, "Healthcare", 500_000, ExpenseCategoryType.HEALTHCARE)
+    private val categoryPersonal = ExpenseCategory(5, "Personal", 750_000, ExpenseCategoryType.PERSONAL)
+    private val categorySavings = ExpenseCategory(6, "Savings", 2_000_000, ExpenseCategoryType.SAVINGS)
+    private val categoryTravel = ExpenseCategory(7, "Travel", 1_00_000, ExpenseCategoryType.TRAVEL)
+    private val categoryInsurance = ExpenseCategory(8, "Insurance", 1_250_000, ExpenseCategoryType.INSURANCE)
+
+    private val categories = listOf(
+        categoryHousing,
+        categoryTransportation,
+        categoryFood,
+        categoryHealthcare,
+        categoryPersonal,
+        categorySavings,
+        categoryTransportation,
+        categoryInsurance
+    )
 
     // Date formatter
     private val sdf = SimpleDateFormat("yyyy-mm-dd", Locale.getDefault())
@@ -49,7 +64,7 @@ class DummyExpenseRepository : ExpenseRepository {
         Expense(20, "Hotel Booking", "Travel accommodation", 300000, sdf.parse("2024-02-10"), categoryTravel) //
     )
 
-    override suspend fun getExpenseTotal(): Resource<ExpenseTotal, ExpenseError> {
+    override suspend fun getExpenseTotal(startDate: Instant?, endDate: Instant?): Resource<ExpenseTotal, ExpenseError> {
         return try {
             // Check if expenses empty
             if (expenses.isEmpty()) {
@@ -63,13 +78,38 @@ class DummyExpenseRepository : ExpenseRepository {
             }
 
             Resource.Success(ExpenseTotal(
-                total,
-                0 // Make last month difference to 0 for sake of simplicity
+                total = total,
+                diffLastMonth = -250_000,
+                limit = 10_000_000
             ))
         } catch (e: Exception) {
             Resource.Error(ExpenseError.UNKNOWN_ERROR)
         }
     }
 
-    override suspend fun getRecentExpenses(): Resource<List<Expense>, ExpenseError> = Resource.Success(expenses)
+    override suspend fun getRecentExpenses(startDate: Instant?, endDate: Instant?): Resource<List<Expense>, ExpenseError> = Resource.Success(expenses)
+
+    override suspend fun getExpenseCategories(startDate: Instant?, endDate: Instant?): Resource<List<ExpenseCategory>, ExpenseCategoryError> {
+        // Create a copy of categories to avoid modifying the original objects
+        val expenseCategories = ArrayList(categories.map { it.copy() })
+
+        // Iterate through expenses and update spent amount for the corresponding categories
+        expenses.forEach { expense ->
+            val category = expense.category
+            val matchingCategory = expenseCategories.find { it.id == category.id }
+            matchingCategory?.let { it.spent = it.spent?.plus(expense.amount ?: 0) }
+        }
+
+
+        return Resource.Success(expenseCategories)
+    }
+
+    override suspend fun getExpenseSummaries(startDate: Instant?, endDate: Instant?): Resource<List<ExpenseSummaryDetail>, ExpenseSummaryError> =
+        Resource.Success(
+            listOf(
+                ExpenseSummaryDetail(1, "Monthly Income", 1000000),
+                ExpenseSummaryDetail(2, "Monthly Expenses", -250000),
+                ExpenseSummaryDetail(3, "Savings", 500000)
+            )
+        )
 }

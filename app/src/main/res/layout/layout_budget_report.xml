@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/paddingNormal">
+
+    <!-- Title Section -->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_budgeting_report"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+    <!-- Subtitle Section -->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginExtraSmall"
+        android:text="@string/subtitle_budgeting_report"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
+
+    <!-- Export Button Section -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/export_pdf"
+        style="@style/Theme.BudgetTrack.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:text="@string/btn_export_pdf" />
+
+
+</LinearLayout>

@@ -40,7 +40,6 @@
                 android:layout_marginTop="@dimen/marginExtraSmall"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="@string/acc_cash"
                 android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -51,7 +50,6 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="@string/default_amount"
                 android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
 
         </LinearLayout>
